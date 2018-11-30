@@ -1,0 +1,53 @@
+import UIKit
+
+//  1. Создайте дикшинари как журнал студентов, где имя и фамилия студента это ключ, а оценка за контрольную значение. Некоторым студентам повысьте оценки - они пересдали. Потом добавьте парочку студентов, так как их только что перевели к вам в группу. А потом несколько удалите, так как они от вас ушли :( После всех этих перетрубаций посчитайте общий бал группы и средний бал
+
+var diStudent = ["Volodymyr Ryndin": 10, "Bobrina Roma": 10, "Olga Ryndina": 9, "Karina Ryndina": 5, "Stupid Student": 0, "Kub Sergey": 8, "Mushenko Dima": 11]
+diStudent.updateValue(7, forKey: "Karina Ryndina")
+diStudent.updateValue(11, forKey: "Volodymyr Ryndin")
+diStudent["Zuev Alex"] = 7
+diStudent["Bob Irjanski"] = 10
+diStudent.removeValue(forKey: "Stupid Student")
+diStudent.removeValue(forKey: "Kub Sergey")
+print(diStudent)
+
+var totalScore = 0
+var middleScore = 0
+
+for value in diStudent{
+    totalScore += value.value
+}
+for value in diStudent {
+    middleScore += value.value
+}
+print("Middle score of students is - \(middleScore / diStudent.count)")
+print("Total score of student is - \(totalScore)")
+
+// 2. Создать дикшинари дни в месяцах, где месяц это ключ, а количество дней - значение. В цикле выведите ключ-значение попарно, причем один раз выведите через тюплы, а другой раз пройдитесь по массиву ключей и для каждого из них доставайте значения.
+
+var dayInMonth = ["January": 31, "February": 28, "March": 31, "April": 30, "May": 31, "June": 30, "July": 31, "August": 31, "September": 30, "October": 31, "November": 30, "December": 31 ]
+
+for (month, days) in dayInMonth {
+    print("In \(month) - \(days) days")
+}
+
+for key in dayInMonth.keys {
+   print("in \(key) - \(dayInMonth[key]!) days")
+}
+
+ //3. Создать дикшинари , в которой ключ это адрес шахматной клетки (пример: a5, b3, g8), а значение это Bool. Если у клетки белый цвет, то значение true, а если черный - false. Выведите дикшинари в печать и убедитесь что все правильно. Рекомендация: постарайтесь все сделать используя вложенный цикл (объяснение в уроке).
+
+var letters = ["A", "B", "C", "D", "E", "F", "G", "H"]
+var digitis = [1, 2, 3, 4, 5, 6, 7, 8]
+var coorDic = [String: Bool]()
+
+for (index, value) in letters.enumerated() {
+    for x in digitis {
+        if (index + 1) % 2 == x % 2 {
+            coorDic.updateValue(false, forKey: value + String(x))
+        } else {
+            coorDic.updateValue(true, forKey: value + String(x))
+        }
+    }
+}
+print(coorDic)
